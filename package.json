@@ -1,0 +1,44 @@
+{
+  "name": "coder-typer",
+  "displayName": "Coder Typer",
+  "description": "Write code with no typos using a reference file.",
+  "version": "0.1.0",
+  "engines": {
+    "vscode": "^1.60.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+      "configuration": {
+        "title": "Coder Typer",
+        "properties": {
+          "coderTyper.referenceDirectory": {
+            "type": "string",
+            "default": "",
+            "description": "Directory path where reference files are stored. Can be absolute or relative to workspace root. If empty, uses .ref extension on the current file."
+          }
+        }
+      }
+    },
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.60.0",
+    "eslint": "^8.33.0",
+    "glob": "^10.3.3",
+    "vscode-test": "^2.3.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ebby-s/coder-typer"
+  },
+  "publisher": "ebby-s"
+}
