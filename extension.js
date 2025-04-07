@@ -94,22 +94,10 @@ function activate(context) {
                 // Get current document content
                 const currentContent = editor.document.getText();
                 
-                // Create a new string to hold the corrected content
-                let correctedContent = '';
-                
                 // Determine the length to process (min of both files to only check typed characters)
                 const lengthToProcess = Math.min(currentContent.length, referenceContent.length);
                 
-                // Process each character that has been typed
-                for (let i = 0; i < lengthToProcess; i++) {
-                    if (currentContent[i] !== referenceContent[i]) {
-                        // Use reference character when different
-                        correctedContent += referenceContent[i];
-                    } else {
-                        // Keep original character when same
-                        correctedContent += currentContent[i];
-                    }
-                }
+                let correctedContent = referenceContent.slice(0, lengthToProcess);
                 
                 // If current file is longer than what we've processed, keep the extra content
                 if (currentContent.length > lengthToProcess) {
